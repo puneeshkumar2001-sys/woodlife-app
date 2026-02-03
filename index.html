@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WoodLife Chennai - Wood's Complete Journey</title>
+    <title>WoodLife - Complete Furniture Lifecycle</title>
     <style>
         * {
             margin: 0;
@@ -13,641 +13,1021 @@
         }
 
         :root {
-            --wood-dark: #5D4037;
-            --wood-medium: #8B4513;
-            --wood-light: #D4A574;
-            --earth-green: #2E7D32;
-            --climate-blue: #0288D1;
-            --recycle-green: #388E3C;
-            --white: #FFFFFF;
-            --bg-light: #F8F5F2;
+            --primary: #8B4513;
+            --secondary: #2E7D32;
+            --accent: #FF9800;
+            --light: #F8F5F2;
+            --dark: #5D4037;
         }
 
         body {
-            background: var(--bg-light);
+            background: var(--light);
             color: #333;
             line-height: 1.6;
             min-height: 100vh;
         }
 
-        .container {
+        .app-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* HEADER */
-        .main-header {
-            text-align: center;
-            padding: 50px 20px;
-            background: linear-gradient(135deg, var(--wood-dark), var(--wood-medium));
-            color: white;
-            border-radius: 0 0 40px 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 15px 35px rgba(93, 64, 55, 0.2);
+        /* STEP INDICATOR */
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
             position: relative;
-            overflow: hidden;
         }
 
-        .main-header::before {
+        .step-indicator::before {
             content: '';
             position: absolute;
-            top: 0;
+            top: 20px;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M20,20 Q40,5 60,20 T100,20" stroke="white" fill="none" stroke-width="1"/><path d="M20,40 Q40,25 60,40 T100,40" stroke="white" fill="none" stroke-width="1"/></svg>');
+            height: 3px;
+            background: #ddd;
+            z-index: 1;
         }
 
-        .main-header h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
+        .step {
             position: relative;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            z-index: 2;
+            text-align: center;
+            flex: 1;
         }
 
-        .main-header h2 {
-            font-size: 1.4rem;
-            font-weight: 400;
-            opacity: 0.95;
-            max-width: 700px;
-            margin: 0 auto 25px;
-        }
-
-        .unique-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--earth-green), #4CAF50);
-            color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 15px 0;
-            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        /* UNIQUE FEATURES GRID */
-        .unique-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 50px 0;
-        }
-
-        .feature-card {
+        .step-circle {
+            width: 40px;
+            height: 40px;
             background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border-top: 5px solid var(--wood-medium);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .feature-card.highlight {
-            border-top-color: var(--earth-green);
-            background: linear-gradient(135deg, #E8F5E9, #F1F8E9);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        .feature-card h3 {
-            color: var(--wood-dark);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .feature-card p {
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        .feature-tag {
-            display: inline-block;
-            background: var(--wood-light);
-            color: var(--wood-dark);
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-
-        /* WOOD PASSPORT DEMO */
-        .passport-demo {
-            background: white;
-            border-radius: 25px;
-            padding: 40px;
-            margin: 60px 0;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            border: 2px solid var(--wood-light);
-            position: relative;
-        }
-
-        .passport-demo::before {
-            content: 'WOOD PASSPORT';
-            position: absolute;
-            top: -15px;
-            left: 40px;
-            background: var(--wood-medium);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 15px;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        .passport-header {
+            border: 3px solid #ddd;
+            border-radius: 50%;
+            margin: 0 auto 10px;
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--bg-light);
-        }
-
-        .passport-qr {
-            background: #f5f5f5;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            min-width: 120px;
-        }
-
-        .qr-placeholder {
-            width: 90px;
-            height: 90px;
-            background: repeating-linear-gradient(
-                45deg,
-                #ddd,
-                #ddd 5px,
-                #eee 5px,
-                #eee 10px
-            );
-            margin: 0 auto 10px;
-            border-radius: 5px;
-        }
-
-        .passport-info h3 {
-            color: var(--wood-dark);
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-        }
-
-        .passport-meta {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        .passport-timeline {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .timeline-stage {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 15px;
-            border-left: 4px solid var(--climate-blue);
-            transition: all 0.3s ease;
-        }
-
-        .timeline-stage:hover {
-            background: #f0f7ff;
-            transform: translateX(5px);
-        }
-
-        .timeline-stage.current {
-            background: #E8F5E9;
-            border-left-color: var(--earth-green);
-        }
-
-        .stage-number {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background: var(--climate-blue);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
+            justify-content: center;
             font-weight: bold;
-            margin-right: 10px;
+            color: #999;
         }
 
-        .timeline-stage.current .stage-number {
-            background: var(--earth-green);
-        }
-
-        .timeline-stage h4 {
-            color: var(--wood-dark);
-            margin: 10px 0 5px;
-            font-size: 1.1rem;
-        }
-
-        .timeline-stage p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        /* CHENNAI SPECIFIC */
-        .chennai-section {
-            background: linear-gradient(135deg, #E3F2FD, #E8F5E9);
-            border-radius: 25px;
-            padding: 40px;
-            margin: 50px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .chennai-section::before {
-            content: '🌧️ CHENNAI OPTIMIZED';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--climate-blue);
+        .step.active .step-circle {
+            background: var(--primary);
+            border-color: var(--primary);
             color: white;
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
         }
 
-        .climate-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+        .step.completed .step-circle {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            color: white;
         }
 
-        .climate-card {
+        .step-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .step.active .step-label {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* STEP CONTAINERS */
+        .step-container {
             background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            display: none;
         }
 
-        .climate-card h4 {
-            color: var(--wood-dark);
-            margin-bottom: 15px;
+        .step-container.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-title {
+            color: var(--dark);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .climate-card p {
-            color: #555;
-            font-size: 0.95rem;
+        /* STEP 1: FURNITURE SELECTION */
+        .furniture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
         }
 
-        /* COMPARISON TABLE */
-        .comparison {
-            background: white;
-            border-radius: 25px;
-            padding: 40px;
-            margin: 50px 0;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-        }
-
-        .comparison h2 {
-            text-align: center;
-            color: var(--wood-dark);
-            margin-bottom: 40px;
-            font-size: 2rem;
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        .comparison-table th {
-            background: var(--wood-dark);
-            color: white;
+        .furniture-card {
+            border: 2px solid #eee;
+            border-radius: 15px;
             padding: 20px;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .comparison-table td {
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .comparison-table tr:hover td {
-            background: #f9f9f9;
-        }
-
-        .checkmark {
-            color: var(--earth-green);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .cross {
-            color: #f44336;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* FOOTER */
-        .main-footer {
             text-align: center;
-            padding: 40px 20px;
-            background: var(--wood-dark);
-            color: white;
-            border-radius: 40px 40px 0 0;
-            margin-top: 60px;
-        }
-
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            padding: 15px 40px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            margin: 20px 0;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+        .furniture-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.1);
         }
 
-        /* RESPONSIVE */
+        .furniture-card.selected {
+            border-color: var(--primary);
+            background: rgba(139, 69, 19, 0.05);
+        }
+
+        .furniture-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        /* STEP 2: LOCATION & CLIMATE */
+        .location-input {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            max-width: 500px;
+        }
+
+        .location-input input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .location-input button {
+            padding: 15px 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .climate-results {
+            background: #E8F5E9;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 5px solid var(--secondary);
+        }
+
+        .pest-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .pest-option {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .pest-option.selected {
+            border-color: var(--accent);
+            background: #FFF3E0;
+        }
+
+        .wood-recommendation {
+            background: #FFF3E0;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 2px dashed var(--accent);
+        }
+
+        /* STEP 3: AR SCAN */
+        .ar-preview {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scan-guide {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* STEP 4: AI DESIGN SUGGESTIONS */
+        .design-suggestions {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .design-option {
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: move;
+            transition: all 0.3s ease;
+        }
+
+        .design-option:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .design-preview {
+            min-height: 200px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 2px dashed #ccc;
+        }
+
+        .design-element {
+            position: absolute;
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            cursor: move;
+        }
+
+        /* STEP 5: AI REFINEMENT */
+        .ai-refinement {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-refinement::before {
+            content: '🤖 AI TRANSFORMING...';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+
+        .refinement-comparison {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .comparison-box {
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* STEP 6: 360 VIEW & BOOKING */
+        .view-360 {
+            width: 100%;
+            height: 400px;
+            background: #222;
+            border-radius: 15px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+        }
+
+        .view-controls {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .booking-summary {
+            background: #E8F5E9;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .price-breakdown {
+            margin: 20px 0;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* STEP 7: FUTURE TRANSFORMATION */
+        .damage-upload {
+            border: 3px dashed #ccc;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+
+        .damage-upload:hover {
+            border-color: var(--primary);
+            background: rgba(139, 69, 19, 0.05);
+        }
+
+        .transformation-ideas {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .transformation-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        /* NAVIGATION BUTTONS */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .nav-btn {
+            padding: 15px 40px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.2);
+        }
+
+        .nav-btn.secondary {
+            background: #666;
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
-            .main-header h1 {
-                font-size: 2.2rem;
+            .step-indicator {
+                flex-wrap: wrap;
             }
             
-            .feature-card {
+            .step {
+                flex: 0 0 33.33%;
+                margin-bottom: 20px;
+            }
+            
+            .step-container {
                 padding: 20px;
             }
             
-            .passport-demo {
-                padding: 25px;
+            .furniture-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .comparison-table {
-                display: block;
-                overflow-x: auto;
+            .refinement-comparison {
+                flex-direction: column;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-btn {
+                width: 100%;
             }
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .main-header {
-                padding: 30px 15px;
-            }
-            
-            .unique-features {
+            .furniture-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .step {
+                flex: 0 0 50%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- HEADER -->
-        <header class="main-header">
-            <h1>WoodLife Chennai</h1>
-            <h2>Wood's Complete Journey: From Tree → Furniture → Transformation → Memory</h2>
-            <div class="unique-badge">🌳 UNIQUE: Complete Circular Wood Lifecycle Tracking</div>
-        </header>
+    <div class="app-container">
+        <!-- STEP INDICATOR -->
+        <div class="step-indicator">
+            <div class="step active" id="step1">
+                <div class="step-circle">1</div>
+                <div class="step-label">Choose Furniture</div>
+            </div>
+            <div class="step" id="step2">
+                <div class="step-circle">2</div>
+                <div class="step-label">Location & Climate</div>
+            </div>
+            <div class="step" id="step3">
+                <div class="step-circle">3</div>
+                <div class="step-label">AR Room Scan</div>
+            </div>
+            <div class="step" id="step4">
+                <div class="step-circle">4</div>
+                <div class="step-label">AI Design</div>
+            </div>
+            <div class="step" id="step5">
+                <div class="step-circle">5</div>
+                <div class="step-label">AI Refinement</div>
+            </div>
+            <div class="step" id="step6">
+                <div class="step-circle">6</div>
+                <div class="step-label">360° View & Book</div>
+            </div>
+            <div class="step" id="step7">
+                <div class="step-circle">7</div>
+                <div class="step-label">Future Transform</div>
+            </div>
+        </div>
 
-        <!-- UNIQUE VALUE PROPOSITION -->
-        <section class="unique-features">
-            <div class="feature-card highlight">
-                <div class="feature-icon">🌍</div>
-                <h3>Climate-Adaptive Wood</h3>
-                <p>Not just furniture - wood selected for YOUR city's climate. Chennai's 78% humidity needs Teak, not Pine.</p>
-                <div class="feature-tag">UNIQUE: Nobody does this</div>
+        <!-- STEP 1: CHOOSE FURNITURE -->
+        <div class="step-container active" id="step1-container">
+            <h2 class="step-title">🪑 Step 1: Choose Your Furniture</h2>
+            <p>Select what you want to place in your room</p>
+            
+            <div class="furniture-grid">
+                <div class="furniture-card" data-type="sofa">
+                    <div class="furniture-icon">🛋️</div>
+                    <h3>Sofa</h3>
+                    <p>3-seater, 2-seater options</p>
+                </div>
+                
+                <div class="furniture-card" data-type="chair">
+                    <div class="furniture-icon">🪑</div>
+                    <h3>Chair</h3>
+                    <p>Single seating</p>
+                </div>
+                
+                <div class="furniture-card" data-type="table">
+                    <div class="furniture-icon">🍽️</div>
+                    <h3>Dining Table</h3>
+                    <p>4-seater, 6-seater</p>
+                </div>
+                
+                <div class="furniture-card" data-type="bed">
+                    <div class="furniture-icon">🛏️</div>
+                    <h3>Bed</h3>
+                    <p>King, Queen sizes</p>
+                </div>
+                
+                <div class="furniture-card" data-type="desk">
+                    <div class="furniture-icon">💼</div>
+                    <h3>Study Desk</h3>
+                    <p>With storage</p>
+                </div>
+                
+                <div class="furniture-card" data-type="cabinet">
+                    <div class="furniture-icon">🗄️</div>
+                    <h3>Cabinet</h3>
+                    <p>Storage unit</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 2: LOCATION & CLIMATE -->
+        <div class="step-container" id="step2-container">
+            <h2 class="step-title">📍 Step 2: Your Location & Climate</h2>
+            <p>We analyze local climate to recommend perfect wood</p>
+            
+            <div class="location-input">
+                <input type="text" id="locationInput" placeholder="Enter your city (e.g., Chennai)" value="Chennai">
+                <button onclick="analyzeClimate()">Analyze Climate</button>
             </div>
             
-            <div class="feature-card">
-                <div class="feature-icon">🔄</div>
-                <h3>Circular Lifecycle</h3>
-                <p>Sofa (10 yrs) → Coffee Table (5 yrs) → Bookshelf (5 yrs) → Photo Frame (lifetime). Planned from day one.</p>
-                <div class="feature-tag">BEYOND RECYCLING</div>
+            <div id="climateResults" class="climate-results" style="display: none;">
+                <h3>🌡️ Climate Analysis for <span id="cityName">Chennai</span></h3>
+                <p>Humidity: <strong>78%</strong> | Temperature: <strong>28-38°C</strong></p>
+                <p>Monsoon: <strong>Jun-Sep</strong> | Termite Risk: <strong>High</strong></p>
             </div>
             
-            <div class="feature-card">
-                <div class="feature-icon">📱</div>
-                <h3>Wood DNA Passport</h3>
-                <p>Each piece gets a digital passport tracking its entire journey. Scan QR to see complete history.</p>
-                <div class="feature-tag">DIGITAL TWIN TECHNOLOGY</div>
-            </div>
-        </section>
-
-        <!-- WOOD PASSPORT DEMO -->
-        <section class="passport-demo">
-            <div class="passport-header">
-                <div class="passport-qr">
-                    <div class="qr-placeholder"></div>
-                    <small>Scan for Journey</small>
-                </div>
-                <div class="passport-info">
-                    <h3>Chennai Teak Sofa #CTK2024-001</h3>
-                    <p class="passport-meta">Teak Wood • Chennai-Optimized • Termite Resistant</p>
+            <div style="margin: 30px 0;">
+                <h4>🐜 Any pest problems in your area?</h4>
+                <div class="pest-options">
+                    <div class="pest-option" data-pest="termites">Termites</div>
+                    <div class="pest-option" data-pest="bedbugs">Bed Bugs</div>
+                    <div class="pest-option" data-pest="rats">Rats/Rodents</div>
+                    <div class="pest-option" data-pest="woodborer">Wood Borer</div>
+                    <div class="pest-option" data-pest="none">None</div>
                 </div>
             </div>
             
-            <div class="passport-timeline">
-                <div class="timeline-stage">
-                    <span class="stage-number">1</span>
-                    <h4>Source: Sustainable Teak</h4>
-                    <p>From Kerala plantation, 15-year growth</p>
-                </div>
-                
-                <div class="timeline-stage current">
-                    <span class="stage-number">2</span>
-                    <h4>Current: Living Room Sofa</h4>
-                    <p>Year 0-10: Family seating in Chennai home</p>
-                </div>
-                
-                <div class="timeline-stage">
-                    <span class="stage-number">3</span>
-                    <h4>Transform: Coffee Tables</h4>
-                    <p>Year 11-15: Becomes 2 coffee tables</p>
-                </div>
-                
-                <div class="timeline-stage">
-                    <span class="stage-number">4</span>
-                    <h4>Final: Memory Frames</h4>
-                    <p>Year 21+: Family photo frames (lifetime)</p>
-                </div>
+            <div id="woodRecommendation" class="wood-recommendation" style="display: none;">
+                <h3>🌳 Recommended Wood: <span style="color: var(--secondary);">TEAK</span></h3>
+                <p><strong>Why Teak for Chennai:</strong></p>
+                <ul style="margin: 10px 0 10px 20px;">
+                    <li>Natural oils resist 78% humidity</li>
+                    <li>Termite and pest resistant</li>
+                    <li>Withstands monsoon moisture</li>
+                    <li>Durable for 25+ years</li>
+                </ul>
+                <p><em>Alternative: Treated Sheesham (for budget)</em></p>
             </div>
-        </section>
+        </div>
 
-        <!-- CHENNAI SPECIFIC -->
-        <section class="chennai-section">
-            <h2 style="color: var(--wood-dark); margin-bottom: 20px;">Chennai-Specific Wood Science</h2>
-            <p style="color: #555; margin-bottom: 20px;">We don't just sell furniture. We solve Chennai's specific wood problems.</p>
+        <!-- STEP 3: AR ROOM SCAN -->
+        <div class="step-container" id="step3-container">
+            <h2 class="step-title">📱 Step 3: AR Room Scan & Placement</h2>
+            <p>Open camera to scan your room and place furniture</p>
             
-            <div class="climate-grid">
-                <div class="climate-card">
-                    <h4>🌧️ 78% Humidity Problem</h4>
-                    <p>Regular wood swells in monsoon. Our teak has natural oils that resist moisture absorption.</p>
-                </div>
-                
-                <div class="climate-card">
-                    <h4>🐜 Termite Resistance</h4>
-                    <p>Chennai has high termite risk. Our treatment protects wood for 25+ years.</p>
-                </div>
-                
-                <div class="climate-card">
-                    <h4>☀️ UV Protection</h4>
-                    <p>Chennai sun fades wood. Our finishes protect while letting wood breathe.</p>
-                </div>
-                
-                <div class="climate-card">
-                    <h4>🌡️ Thermal Stability</h4>
-                    <p>Wood that doesn't crack in 35°C to 28°C daily temperature swings.</p>
+            <div class="ar-preview">
+                <div>📸 Camera Feed Would Show Here</div>
+                <div class="scan-guide">
+                    <strong>Point camera at floor → Move phone slowly → Tap to place</strong>
                 </div>
             </div>
-        </section>
+            
+            <div style="margin: 20px 0;">
+                <h4>📏 Space Analysis</h4>
+                <p>Walking space around sofa: <strong>✅ 2 feet clearance (Good)</strong></p>
+                <p>Distance from TV: <strong>✅ 8 feet (Perfect)</strong></p>
+                <p>Natural light exposure: <strong>⚠️ Partial sunlight (Use curtains)</strong></p>
+            </div>
+            
+            <button class="nav-btn" onclick="captureRoomScan()" style="width: 100%;">
+                ✅ Capture Room Scan & Continue
+            </button>
+        </div>
 
-        <!-- COMPETITION COMPARISON -->
-        <section class="comparison">
-            <h2>Why We're Different</h2>
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Feature</th>
-                        <th>IKEA Place</th>
-                        <th>Modsy AI</th>
-                        <th>Circular Brands</th>
-                        <th>WoodLife</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>AR Room Preview</td>
-                        <td><span class="checkmark">✓</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="checkmark">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td>Climate-Adaptive Wood</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="checkmark">✓</span> <strong>UNIQUE</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Wood Lifecycle Tracking</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="checkmark">✓</span> <strong>UNIQUE</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Chennai-Specific Design</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="checkmark">✓</span> <strong>UNIQUE</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Transformation Planning</td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="cross">✗</span></td>
-                        <td><span class="checkmark">✓</span></td>
-                        <td><span class="checkmark">✓</span> (Planned from day 1)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <!-- STEP 4: AI DESIGN SUGGESTIONS -->
+        <div class="step-container" id="step4-container">
+            <h2 class="step-title">🎨 Step 4: AI Design Suggestions</h2>
+            <p>Drag & drop designs that match your room's vibe</p>
+            
+            <div class="design-suggestions">
+                <div class="design-option" data-design="peacock" draggable="true">
+                    <div style="font-size: 3rem;">🦚</div>
+                    <h4>Peacock Theme</h4>
+                    <p>Traditional, colorful</p>
+                </div>
+                
+                <div class="design-option" data-design="lion" draggable="true">
+                    <div style="font-size: 3rem;">🦁</div>
+                    <h4>Lion Theme</h4>
+                    <p>Royal, strong</p>
+                </div>
+                
+                <div class="design-option" data-design="floral" draggable="true">
+                    <div style="font-size: 3rem;">🌺</div>
+                    <h4>Floral Pattern</h4>
+                    <p>Elegant, natural</p>
+                </div>
+                
+                <div class="design-option" data-design="geometric" draggable="true">
+                    <div style="font-size: 3rem;">🔷</div>
+                    <h4>Geometric</h4>
+                    <p>Modern, clean</p>
+                </div>
+                
+                <div class="design-option" data-design="tamil" draggable="true">
+                    <div style="font-size: 3rem;">🏺</div>
+                    <h4>Tamil Traditional</h4>
+                    <p>Cultural, intricate</p>
+                </div>
+                
+                <div class="design-option" data-design="minimal" draggable="true">
+                    <div style="font-size: 3rem;">⬜</div>
+                    <h4>Minimalist</h4>
+                    <p>Simple, modern</p>
+                </div>
+            </div>
+            
+            <h4 style="margin-top: 30px;">Design Preview Area</h4>
+            <div class="design-preview" id="designPreview">
+                <div style="color: #999;">Drag designs here to preview</div>
+            </div>
+            
+            <div id="aiSuggestion" style="background: #E3F2FD; padding: 20px; border-radius: 10px; margin-top: 20px; display: none;">
+                <h4>🤖 AI Suggestion:</h4>
+                <p><strong>"Peacock + Lion combination would look great! They complement your room's traditional vibe."</strong></p>
+            </div>
+        </div>
 
-        <!-- FOOTER -->
-        <footer class="main-footer">
-            <div class="footer-content">
-                <h3 style="margin-bottom: 20px;">Ready for Wood That Lives Multiple Lives?</h3>
-                <p style="opacity: 0.9; margin-bottom: 30px;">
-                    We're building Chennai's first climate-adaptive, circular furniture ecosystem.
+        <!-- STEP 5: AI REFINEMENT -->
+        <div class="step-container" id="step5-container">
+            <h2 class="step-title">✨ Step 5: AI Artistic Refinement</h2>
+            <p>Watch AI transform your design into something magical</p>
+            
+            <div class="ai-refinement">
+                <h3>Transforming: Peacock 🦚 + Lion 🦁</h3>
+                <p>AI is combining elements naturally...</p>
+                
+                <div class="refinement-comparison">
+                    <div class="comparison-box">
+                        <h4>Your Design</h4>
+                        <div style="font-size: 4rem; margin: 20px 0;">🦚 🦁</div>
+                        <p>Separate elements</p>
+                    </div>
+                    
+                    <div class="comparison-box">
+                        <h4>AI Refined</h4>
+                        <div style="font-size: 4rem; margin: 20px 0;">🌳 🦁</div>
+                        <p>Peacock feathers → Trees<br>Lion sitting under tree</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <button class="nav-btn" onclick="refineDesign()" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                    🪄 Let AI Refine This Design
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 6: 360° VIEW & BOOKING -->
+        <div class="step-container" id="step6-container">
+            <h2 class="step-title">👁️ Step 6: 360° View & Booking</h2>
+            <p>View your designed furniture from all angles</p>
+            
+            <div class="view-360">
+                <div>🛋️ 3D Model Would Rotate Here</div>
+                <div class="view-controls">
+                    <button style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border: none; border-radius: 5px;">◀️</button>
+                    <button style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border: none; border-radius: 5px;">▶️</button>
+                    <button style="padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border: none; border-radius: 5px;">🔄 Rotate</button>
+                </div>
+            </div>
+            
+            <div class="booking-summary">
+                <h3>📦 Order Summary</h3>
+                <div class="price-breakdown">
+                    <div class="price-item">
+                        <span>Teak Wood Sofa (3-seater)</span>
+                        <span>₹45,000</span>
+                    </div>
+                    <div class="price-item">
+                        <span>Peacock+Lion AI Design</span>
+                        <span>₹5,000</span>
+                    </div>
+                    <div class="price-item">
+                        <span>Climate Treatment (Chennai)</span>
+                        <span>₹3,000</span>
+                    </div>
+                    <div class="price-item">
+                        <span>Delivery & Installation</span>
+                        <span>₹2,000</span>
+                    </div>
+                    <div class="price-item" style="font-weight: bold; border-top: 2px solid var(--secondary); padding-top: 15px;">
+                        <span>Total</span>
+                        <span style="color: var(--secondary); font-size: 1.2rem;">₹55,000</span>
+                    </div>
+                </div>
+                
+                <button class="nav-btn" onclick="placeOrder()" style="width: 100%; background: var(--secondary);">
+                    ✅ Confirm Order & Proceed to Payment
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 7: FUTURE TRANSFORMATION -->
+        <div class="step-container" id="step7-container">
+            <h2 class="step-title">🔄 Step 7: Future Transformation</h2>
+            <p>Years later: Convert damaged furniture into new items</p>
+            
+            <div style="margin: 30px 0;">
+                <h4>📸 Upload photos of damaged sofa</h4>
+                <div class="damage-upload" onclick="uploadDamage()">
+                    <div style="font-size: 3rem; margin-bottom: 20px;">📁</div>
+                    <p><strong>Click to upload damage photos</strong></p>
+                    <p style="color: #666; font-size: 0.9rem;">or drag & drop images here</p>
+                </div>
+            </div>
+            
+            <div id="aiAnalysis" style="display: none;">
+                <h4>🤖 AI Damage Analysis</h4>
+                <p><strong>Analysis Complete:</strong> Frame intact (80%), Fabric damaged, One leg broken</p>
+                <p><strong>Usable wood:</strong> 65% of original material</p>
+                
+                <h4 style="margin-top: 30px;">🪚 Transformation Suggestions</h4>
+                <div class="transformation-ideas">
+                    <div class="transformation-card">
+                        <h4>Option 1: Two Chairs</h4>
+                        <p>From sofa arms + back</p>
+                        <div style="font-size: 2rem; margin: 15px 0;">🪑 🪑</div>
+                        <button class="nav-btn" style="padding: 10px 20px; font-size: 0.9rem;">Select</button>
+                    </div>
+                    
+                    <div class="transformation-card">
+                        <h4>Option 2: Coffee Table</h4>
+                        <p>From seat frame</p>
+                        <div style="font-size: 2rem; margin: 15px 0;">☕</div>
+                        <button class="nav-btn" style="padding: 10px 20px; font-size: 0.9rem;">Select</button>
+                    </div>
+                    
+                    <div class="transformation-card">
+                        <h4>Option 3: Bookshelf</h4>
+                        <p>From side panels</p>
+                        <div style="font-size: 2rem; margin: 15px 0;">📚</div>
+                        <button class="nav-btn" style="padding: 10px 20px; font-size: 0.9rem;">Select</button>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; margin-top: 30px; color: #666;">
+                    <strong>Circular Economy:</strong> We'll collect damaged pieces and create new furniture from them
                 </p>
-                <a href="https://wa.me/919876543210?text=Hi! I'm interested in WoodLife Chennai's climate-adaptive furniture" 
-                   class="contact-btn" target="_blank">
-                    💬 WhatsApp for Early Access
-                </a>
-                <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">
-                    WoodLife Chennai • Climate-Adaptive Furniture • Circular Economy<br>
-                    📍 Made for Chennai, by Chennai
-                </p>
             </div>
-        </footer>
+        </div>
+
+        <!-- NAVIGATION BUTTONS -->
+        <div class="nav-buttons">
+            <button class="nav-btn secondary" id="prevBtn" onclick="prevStep()" disabled>
+                ◀️ Previous
+            </button>
+            
+            <button class="nav-btn" id="nextBtn" onclick="nextStep()">
+                Next Step ▶️
+            </button>
+        </div>
     </div>
 
     <script>
-        // Simple interactivity
-        document.querySelectorAll('.timeline-stage').forEach(stage => {
-            stage.addEventListener('click', function() {
-                document.querySelectorAll('.timeline-stage').forEach(s => {
-                    s.classList.remove('current');
-                });
-                this.classList.add('current');
+        // Current step
+        let currentStep = 1;
+        let selectedFurniture = null;
+        let selectedPests = [];
+        let selectedDesigns = [];
+
+        // Initialize steps
+        updateStepDisplay();
+
+        // STEP NAVIGATION
+        function updateStepDisplay() {
+            // Update step indicator
+            document.querySelectorAll('.step').forEach((step, index) => {
+                step.classList.remove('active', 'completed');
+                if (index + 1 === currentStep) {
+                    step.classList.add('active');
+                } else if (index + 1 < currentStep) {
+                    step.classList.add('completed');
+                }
+            });
+
+            // Update containers
+            document.querySelectorAll('.step-container').forEach(container => {
+                container.classList.remove('active');
+            });
+            document.getElementById(`step${currentStep}-container`).classList.add('active');
+
+            // Update buttons
+            document.getElementById('prevBtn').disabled = currentStep === 1;
+            
+            if (currentStep === 7) {
+                document.getElementById('nextBtn').innerHTML = '🏁 Complete Journey';
+            } else {
+                document.getElementById('nextBtn').innerHTML = 'Next Step ▶️';
+            }
+        }
+
+        function nextStep() {
+            if (currentStep < 7) {
+                currentStep++;
+                updateStepDisplay();
                 
-                // Show stage details
-                const stageTitle = this.querySelector('h4').textContent;
-                alert(`Selected: ${stageTitle}\n\nThis shows detailed transformation plan for this stage.`);
+                // Special actions for each step
+                if (currentStep === 2) {
+                    // Auto-analyze climate for Chennai
+                    setTimeout(() => {
+                        analyzeClimate();
+                    }, 500);
+                }
+                
+                if (currentStep === 4) {
+                    // Show AI suggestion
+                    setTimeout(() => {
+                        document.getElementById('aiSuggestion').style.display = 'block';
+                    }, 1000);
+                }
+                
+                if (currentStep === 7) {
+                    // Auto-upload damage simulation
+                    setTimeout(() => {
+                        uploadDamage();
+                    }, 1000);
+                }
+            } else {
+                alert('🎉 Journey Complete! You have experienced the full WoodLife furniture lifecycle.');
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepDisplay();
+            }
+        }
+
+        // STEP 1: Furniture Selection
+        document.querySelectorAll('.furniture-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.furniture-card').forEach(c => {
+                    c.classList.remove('selected');
+                });
+                this.classList.add('selected');
+                selectedFurniture = this.dataset.type;
+                console.log(`Selected: ${selectedFurniture}`);
             });
         });
 
-        // Climate card hover effect
-        document.querySelectorAll('.climate-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-5px)';
-                this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.1)';
-            });
+        // STEP 2: Climate Analysis
+        function analyzeClimate() {
+            const city = document.getElementById('locationInput').value || 'Chennai';
+            document.getElementById('cityName').textContent = city;
             
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = '0 8px 20px rgba(0,0,0,0.05)';
+            // Show climate results
+            document.getElementById('climateResults').style.display = 'block';
+            
+            // Show wood recommendation
+            setTimeout(() => {
+                document.getElementById('woodRecommendation').style.display = 'block';
+            }, 500);
+            
+            // Pest selection
+            document.querySelectorAll('.pest-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    this.classList.toggle('selected');
+                    const pest = this.dataset.pest;
+                    if (this.classList.contains('selected')) {
+                        selectedPests.push(pest);
+                    } else {
+                        selectedPests = selectedPests.filter(p => p !== pest);
+                    }
+                    console.log('Selected pests:', selectedPests);
+                    
+                    // Update wood recommendation based on pests
+                    if (selectedPests.includes('termites') || selectedPests.includes('woodborer')) {
+                        document.querySelector('#woodRecommendation h3 span').textContent = 'TEAK (Termite-proof treated)';
+                    }
+                });
+            });
+        }
+
+        // STEP 3: AR Room Scan
+        function captureRoomScan() {
+            alert('📸 Room scan captured! Measurements saved.\n\nWalking space: 2ft\nTV distance: 8ft\nLight exposure: Partial');
+            nextStep();
+        }
+
+        // STEP 4: Design Drag & Drop
+        document.querySelectorAll('.design-option').forEach(option => {
+            option.addEventListener('dragstart', function(e) {
+                e.dataTransfer.setData('text/plain', this.dataset.design);
             });
         });
+
+        const designPreview = document.getElementById('designPreview');
+        designPreview.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.style.borderColor = 'var(--primary)';
+            this.style.backgroundColor = 'rgba(139, 69, 19, 0.05)';
+        });
+
+        designPreview.addEventListener('dragleave', function() {
+            this.style.borderColor = '#ccc';
+            this.style.backgroundColor = '#f5f5f5';
+        });
+
+        designPreview.addEventListener('drop', function(e) {
+            e.preventDefault();
+            const design = e.dataTransfer.getData('text/plain');
+            selectedDesigns.push(design);
+            
+            // Create design element in preview
+            const element = document.createElement('div');
+            element.className = 'design-element';
+            element.textContent = getDesignEmoji(design) + ' ' + design.charAt(0).toUpperCase() + design.slice(1);
+            element.style.left = Math.random() * 70 + '%';
+            element.style.top = Math.random() * 70 + '%';
+            this.appendChild(element);
+            
+            this.style.borderColor = '#ccc';
+            this.style.backgroundColor = '#f5f5f5';
+            
+            console.log('Selected designs:', selectedDesigns);
+            
+            // If both peacock and lion are selected, show special message
+            if (selectedDesigns.includes('peacock') && selectedDesigns.includes('lion')) {
+                document.getElementById('aiSuggestion').innerHTML = `
+                    <h4>🤖 AI Suggestion:</h4>
+                    <p><strong>"Perfect! Peacock 🦚 + Lion 🦁 combination detected. Click Next to see AI magically transform them into a natural scene!"</strong></p>
+                `;
+                document.getElementById('aiSuggestion').style.display = 'block';
+            }
+        });
+
+        function getDesignEmoji(design) {
+            const emojis = {
+                'peacock': '🦚',
+                'lion': '🦁',
+                'floral': '🌺',
+                'geometric': '🔷',
+                'tamil': '🏺',
+                'minimal': '⬜'
+            };
+            return emojis[design] || '🎨';
+        }
+
+        // STEP 5: AI Refinement
+        function refineDesign() {
+            alert('✨ AI is refining your design...\n\nTransformation: Peacock feathers → Trees\nLion now sits under tree\nResult: Natural, harmonious scene');
+            nextStep();
+        }
+
+        // STEP 6: Place Order
+        function placeOrder() {
+            alert('✅ Order Placed Successfully!\n\n📦 Order #WL2024-001\n💰 Total: ₹55,000\n📞 We will WhatsApp you for delivery details\n\nThank you for choosing WoodLife!');
+            nextStep();
+        }
+
+        // STEP 7: Damage Upload
+        function uploadDamage() {
+            document.querySelector('.damage-upload').innerHTML = `
+                <div style="font-size: 3rem; margin-bottom: 20px;">✅</div>
+                <p><strong>3 Damage Photos Uploaded</strong></p>
+                <p style="color: #666; font-size: 0.9rem;">AI analyzing damage patterns...</p>
+            `;
+            
+            setTimeout(() => {
+                document.getElementById('aiAnalysis').style.display = 'block';
+            }, 1500);
+        }
 
         // Console welcome
-        console.log('%c🌳 WoodLife Chennai - Wood\'s Complete Journey', 
-                   'color: #8B4513; font-size: 18px; font-weight: bold;');
-        console.log('Unique Features:');
-        console.log('1. 🌍 Climate-adaptive wood selection');
-        console.log('2. 🔄 Planned multi-life transformations');
-        console.log('3. 📱 Digital wood passport tracking');
-        console.log('4. 🌧️ Chennai-specific solutions');
+        console.log('%c🌳 WoodLife - Complete Furniture Lifecycle', 'color: #8B4513; font-size: 20px; font-weight: bold;');
+        console.log('Experience all 7 steps:');
+        console.log('1. 🪑 Choose furniture');
+        console.log('2. 🌡️ Climate-based wood recommendation');
+        console.log('3. 📱 AR room scanning');
+        console.log('4. 🎨 AI design suggestions');
+        console.log('5. ✨ AI artistic refinement');
+        console.log('6. 👁️ 360° view & booking');
+        console.log('7. 🔄 Future transformation from damage');
     </script>
 </body>
 </html>
